@@ -1,5 +1,7 @@
 defmodule Socorro do
-	use Application
+	
+    use Application
+    
     alias Socorro.Core.{ Pool }
 
     def start(_type, _args) do
@@ -7,8 +9,12 @@ defmodule Socorro do
     end
 
     def send_report(report) do
-    	Pool.report(%{
-            "report"    => report
-        })
+        try do
+            Pool.report(%{
+                "report"    => report
+            })
+        rescue
+            e in RuntimeError -> e
+        end
     end
 end
