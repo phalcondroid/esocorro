@@ -9,6 +9,7 @@ defmodule Socorro.Core.Worker do
     end
 
     def init(state) do
+        Logger.info "juas juas"
         {:ok, pid} = Report.start_link
         {:ok, [pid | state]}
     end

@@ -4,6 +4,9 @@ defmodule Socorro.Actions.Report do
     @frontend_error_type 1
 
     def start_link do
+        
+        Logger.info inspect("map")
+
         Task.start_link fn ->
             loop()
         end
