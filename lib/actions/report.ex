@@ -38,7 +38,7 @@ defmodule Socorro.Actions.Report do
 
         insert_result = Errors.new(%{
             "count"       => 1,
-            "type"        => 1,
+            "type"        => @elixir_error_type,
             "checksum"    => checksum,
             "time"        => time,
             "message"     => message,
