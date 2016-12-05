@@ -1,5 +1,7 @@
-defmodule Esocorro.Models.Errors do
-    alias Esocorro.Db.MongoPool
+defmodule Socorro.Models.Errors do
+    alias Socorro.Db.MongoPool
+
+    require Logger
 
     @collection "bz_errors"
 
@@ -8,26 +10,32 @@ defmodule Esocorro.Models.Errors do
         Enum.to_list(cursor)
     end
 
-    def new(map) do
-
-		insert_result = Mongo.insert_one(
-            MongoPool,
-            "bz_errors",
+    def new(connection, map) do
+        Mongo.insert_one(
+            connection,
+            @collection,
             map
         )
+    end
 
+    def check_insert_result(insert_result) do
         case insert_result do
-
             {:ok, %Mongo.InsertOneResult{inserted_id: error_id}} ->
-                case is_map(Frontend.register(error_id, error_type, content_body)) do
-                    true  ->
-                        send_slack_message(socorro_id, error_type, 1, build)
-                        Logger.info "Error report saved succesfully"
-                    false ->
-                        Logger.error "Insert error report failed"
-                end
+                error_id
             _ ->
-                Logger.error "Insert Errors collection failed"
+                Logger.error "Insert error report failed"
+                false
+        end
+    end 
+
+    def check_result_update(result_update) do
+        case result_update do
+            {:ok, _} ->
+                Logger.info "Update error Succesfully "
+                true
+            _ ->
+                Logger.error "Update error failed"
+                false
         end
     end
 end

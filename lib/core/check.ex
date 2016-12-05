@@ -12,8 +12,4 @@ defmodule Socorro.Core.Check do
                 socorro_id
         end
     end
-
-    def request_validator(map) do
-    	
-    end
 end

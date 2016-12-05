@@ -43,7 +43,7 @@ defmodule Esocorro.Mixfile do
         {:cowboy,  "~> 1.0.0"},
         {:logger_file_backend, "0.0.8"},
         {:poison,  "~> 2.0"},
-        {:mongodb, ">= 0.0.0"},
+        {:mongodb, "~> 0.1.1"},
         {:poolboy, ">= 0.0.0"},
         {:json,   "~> 0.3.0"},
         {:slack_webhook, ">= 0.0.1"},

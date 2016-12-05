@@ -12,7 +12,7 @@
   "logger_file_backend": {:hex, :logger_file_backend, "0.0.8", "1cdf1c492d6f64ee5d76d423cd76e2282ae3a7800468cb8b305bdfd1e775c07b", [:mix], []},
   "metrics": {:hex, :metrics, "1.0.1", "25f094dea2cda98213cecc3aeff09e940299d950904393b2a29d191c346a8486", [:rebar3], []},
   "mimerl": {:hex, :mimerl, "1.0.2", "993f9b0e084083405ed8252b99460c4f0563e41729ab42d9074fd5e52439be88", [:rebar3], []},
-  "mongodb": {:hex, :mongodb, "0.2.0", "95f85074534bb0a65c4983995903a458e36d0b096f62c1bbdd56bc196f48cf80", [:mix], [{:connection, "~> 1.0", [hex: :connection, optional: false]}, {:db_connection, "~> 1.0", [hex: :db_connection, optional: false]}]},
+  "mongodb": {:hex, :mongodb, "0.1.1", "8737d8f57466b4171f8216f76aa1ab3855d55220b19a1a248fedc96c9f50c274", [:mix], [{:connection, "~> 1.0", [hex: :connection, optional: false]}, {:poolboy, "~> 1.5", [hex: :poolboy, optional: true]}]},
   "poison": {:hex, :poison, "2.2.0", "4763b69a8a77bd77d26f477d196428b741261a761257ff1cf92753a0d4d24a63", [:mix], []},
   "poolboy": {:hex, :poolboy, "1.5.1", "6b46163901cfd0a1b43d692657ed9d7e599853b3b21b95ae5ae0a777cf9b6ca8", [:rebar], []},
   "ranch": {:hex, :ranch, "1.2.1", "a6fb992c10f2187b46ffd17ce398ddf8a54f691b81768f9ef5f461ea7e28c762", [:make], []},

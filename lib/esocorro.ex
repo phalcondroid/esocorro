@@ -9,12 +9,8 @@ defmodule Socorro do
     end
 
     def send_report(report) do
-        try do
-            Pool.report(%{
-                "report"    => report
-            })
-        rescue
-            e in RuntimeError -> e
-        end
+        Pool.report(%{
+            "report"    => report
+        })
     end
 end
