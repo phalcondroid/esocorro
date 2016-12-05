@@ -37,7 +37,7 @@ defmodule Socorro.Actions.Report do
 
         content      = temp_socorro_id <> content_body
 
-        insert_result = Errors.new(MongoPool, %{
+        insert_result = Errors.new(%{
             "count"       => 1,
             "type"        => 1,
             "checksum"    => checksum,

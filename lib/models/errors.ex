@@ -10,9 +10,9 @@ defmodule Socorro.Models.Errors do
         Enum.to_list(cursor)
     end
 
-    def new(connection, map) do
+    def new(map) do
         Mongo.insert_one(
-            connection,
+            MongoPool,
             @collection,
             map
         )
