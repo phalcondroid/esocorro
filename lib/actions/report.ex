@@ -1,7 +1,6 @@
 defmodule Socorro.Actions.Report do
     require Logger
 
-    alias Socorro.Db.MongoPool
     alias Socorro.Models.Errors
     alias Socorro.Core.{ Check, Slack, Crypto }
 
