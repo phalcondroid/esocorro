@@ -23,6 +23,8 @@ defmodule Socorro.Actions.Report do
 
     def report_error(report) do
 
+        Logger.info "Me report"
+
         message      = Map.fetch!(report, "message")
         time         = :os.system_time(:seconds)
         content_body = Map.fetch!(report, "content")
