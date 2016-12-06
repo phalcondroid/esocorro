@@ -36,13 +36,11 @@ defmodule Socorro.Core.Exception do
 				_
 			] = trace
 
-			{:file, files} =  List.keyfind(list, :file, 0)
-
-			IO.puts inspect(files)
-
+			{:file, file} = List.keyfind(list, :file, 0)
+			{:line, line} = List.keyfind(list, :line, 0)
 
 			#[file:, file, line: line] = list
-			map = %{"file" => "", "line" => "line"}
+			map = %{"file" => file, "line" => line}
 
 			Poison.encode!(map)
 		else
