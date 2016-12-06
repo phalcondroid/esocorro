@@ -1,4 +1,4 @@
-defmodule Socorrro.Models.BackgroundError do
+defmodule Socorro.Models.BackgroundError do
 	alias Socorro.Db.MongoPool
 
     require Logger
