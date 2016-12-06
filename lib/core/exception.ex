@@ -40,7 +40,7 @@ defmodule Socorro.Core.Exception do
 			{:line, line} = List.keyfind(list, :line, 0)
 
 			#[file:, file, line: line] = list
-			map = %{"file" => file, "line" => line}
+			map = %{"file" => to_string(file), "line" => line}
 
 			Poison.encode!(map)
 		else
