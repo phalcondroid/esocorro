@@ -23,12 +23,8 @@ defmodule Socorro.Core.Exception do
 		trace = System.stacktrace
 
 		if Enum.count(trace) > 0 do
-
-			list = []
-
-			for {namespace, _, _, [file: file, line: line]}
-				<- trace,
-				do: List.insert_at(list, %{"file" => to_string(file), "namespace" => to_string(namespace),"line" => line}, 0)
+			
+			list = iterate_trace(trace, [], 0)
 
 			IO.puts inspect(list)
 
@@ -36,5 +32,19 @@ defmodule Socorro.Core.Exception do
 		else
 			"{}"
 		end
+	end
+
+	def iterate_trace(trace, new, n) do
+
+	    if n < Enum.count(trace) do
+
+	    	{namespace, _, _, [file: file, line: line]} = Enum.at(trace, n, 0)
+
+	    	new = new ++ [%{"file" => to_string(file), "namespace" => to_string(namespace),"line" => line}]
+
+	    	iterate_trace(trace, new, n + 1)
+	    else
+	    	new
+	    end
 	end
 end
