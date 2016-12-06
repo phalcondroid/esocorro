@@ -5,7 +5,7 @@ defmodule Socorro.Core.Exception do
 
 		IO.puts "no is list: " <> inspect(trace)
 		
-		if is_list(trace) do
+		if Enum.count(trace) > 0 do
 			[
 				{
 					_,
@@ -17,7 +17,7 @@ defmodule Socorro.Core.Exception do
 			] = trace
 			list
 		else
-			nil
+			trace
 		end
 	end
 end
