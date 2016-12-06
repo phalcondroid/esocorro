@@ -26,11 +26,9 @@ defmodule Socorro.Core.Exception do
 			
 			list = iterate_trace(trace, [], 0)
 
-			IO.puts inspect(list)
-
-			Poison.encode!(%{"a" => ""})
+			Poison.encode!(list)
 		else
-			"{}"
+			"[]"
 		end
 	end
 
