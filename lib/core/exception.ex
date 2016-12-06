@@ -6,11 +6,9 @@ defmodule Socorro.Core.Exception do
 
 		if Exception.exception?(e) do
 
-			IO.puts "jojij " <> inspect(get_trace())
-
 			Socorro.send_report(%{
 				"message" => Exception.message(e),
-				"trace"   => ""
+				"trace"   => get_trace()
 			})
 
 		else
