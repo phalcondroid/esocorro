@@ -36,7 +36,7 @@ defmodule Socorro.Core.Exception do
 				_
 			] = trace
 
-			[file: file, line: line] = list
+			[file:, file, line: line] = list
 			map = %{"file" => file, "line" => line}
 
 			Poison.encode!(map)
