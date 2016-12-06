@@ -36,7 +36,9 @@ defmodule Socorro.Core.Exception do
 				_
 			] = trace
 
-			IO.puts inspect(List.keyfind(list, :file, 0))
+			{:file, files} =  List.keyfind(list, :file, "")
+
+			IO.puts inspect(files)
 
 
 			#[file:, file, line: line] = list
