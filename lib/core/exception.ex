@@ -6,9 +6,11 @@ defmodule Socorro.Core.Exception do
 
 		if Exception.exception?(e) do
 
+			IO.puts "jojij " <> get_trace()
+
 			Socorro.send_report(%{
 				"message" => Exception.message(e),
-				"trace"   => get_trace()
+				"trace"   => ""
 			})
 
 		else
@@ -37,7 +39,7 @@ defmodule Socorro.Core.Exception do
 			[file, line] = list
 			map = %{"file" => file, "line" => line}
 
-			Poison.encode(map)
+			Poison.encode!(map)
 		else
 			"{}"
 		end
