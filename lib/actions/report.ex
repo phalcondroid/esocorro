@@ -52,7 +52,7 @@ defmodule Socorro.Actions.Report do
             trace = Map.fetch!(report, "trace")
             
             BackgroundError.new(%{
-                "error_id" => error_id,
+                "errorId"  => error_id,
                 "message"  => message,
                 "trace"    => trace
             })
