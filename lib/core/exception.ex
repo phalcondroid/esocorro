@@ -24,23 +24,21 @@ defmodule Socorro.Core.Exception do
 
 		if Enum.count(trace) > 0 do
 
-			[
-				{
-					_,
-					_,
-					_,
-					list
-				},
-				_
-			] = trace
+			list = []
 
-			{:file, file} = List.keyfind(list, :file, 0)
-			{:line, line} = List.keyfind(list, :line, 0)
+			for {namespace, _, _, [file: file, line: line]} <- trace, do: 
+				List.insert_at(
+					list,
+					%{
+						"file"      => file,
+						"namespace" => to_string(namespace),
+						"line"      => line
+					}
+				)
 
-			#[file:, file, line: line] = list
-			map = %{"file" => to_string(file), "line" => line}
+			IO.puts inspect(list)
 
-			Poison.encode!(map)
+			Poison.encode!(%{"a" => ""})
 		else
 			"{}"
 		end
