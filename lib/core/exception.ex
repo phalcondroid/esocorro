@@ -33,7 +33,8 @@ defmodule Socorro.Core.Exception do
 						"file"      => file,
 						"namespace" => to_string(namespace),
 						"line"      => line
-					}
+					},
+					0
 				)
 
 			IO.puts inspect(list)
