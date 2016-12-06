@@ -3,7 +3,7 @@ defmodule Socorro.Core.Exception do
 
 		trace = System.stacktrace
 
-		IO.puts inspect(trace)
+		IO.puts "no is list: " <> inspect(trace)
 		
 		if is_list(trace) do
 			[
@@ -16,6 +16,8 @@ defmodule Socorro.Core.Exception do
 				_
 			] = trace
 			list
+		else
+			nil
 		end
 	end
 end
