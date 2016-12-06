@@ -1,7 +1,7 @@
 defmodule Socorro.Core.Crypto do
 
 	def get_fn1a64_socorro_id() do
-        String.upcase(FNV.FNV1a.hex(UUID.uuid1(), 64))
+        String.upcase(FNV.FNV1a.hex(UUID.uuid1(), 32))
     end
 
     def get_checksum(content) do
