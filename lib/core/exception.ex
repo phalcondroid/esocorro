@@ -36,7 +36,8 @@ defmodule Socorro.Core.Exception do
 				_
 			] = trace
 
-			IO.puts inspect(List.keyfind(list, :file, nil))
+			IO.puts inspect(List.keyfind(list, :file, 0))
+
 
 			#[file:, file, line: line] = list
 			map = %{"file" => "", "line" => "line"}
