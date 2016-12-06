@@ -2,6 +2,7 @@ defmodule Socorro.Actions.Report do
     require Logger
 
     alias Socorro.Models.Errors
+    alias Socorro.Models.BackgroundError
     alias Socorro.Core.{ Check, Slack, Crypto }
 
     @elixir_error_type 3
@@ -26,7 +27,7 @@ defmodule Socorro.Actions.Report do
 
         message      = Map.fetch!(report, "message")
         time         = :os.system_time(:seconds)
-        content_body = Map.fetch!(report, "content")
+        content_body = Map.fetch!(report, "message")
         checksum     = Crypto.get_checksum(message <> content_body)
 
         uuid         = "?"
@@ -48,9 +49,18 @@ defmodule Socorro.Actions.Report do
             "socorroId"   => temp_socorro_id
         })
 
-        result_check = Errors.check_insert_result(insert_result)
+        error_id = Errors.check_insert_result(insert_result)
 
-        if result_check != false do
+        if error_id != false do
+
+            trace = Map.fetch!(report, "trace")
+            
+            BackgroundError.new(%{
+                "error_id" => error_id,
+                "message"  => message,
+                "trace"    => trace
+            })
+
             Slack.send_slack_message(temp_socorro_id, message, 1, build)
         end
     end
