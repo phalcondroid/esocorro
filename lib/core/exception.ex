@@ -26,16 +26,9 @@ defmodule Socorro.Core.Exception do
 
 			list = []
 
-			for {namespace, _, _, [file: file, line: line]} <- trace, do: 
-				List.insert_at(
-					list,
-					%{
-						"file"      => file,
-						"namespace" => to_string(namespace),
-						"line"      => line
-					},
-					0
-				)
+			for {namespace, _, _, [file: file, line: line]}
+				<- trace,
+				do: IO.puts inspect(namespace)
 
 			IO.puts inspect(list)
 
