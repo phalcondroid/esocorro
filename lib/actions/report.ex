@@ -23,8 +23,6 @@ defmodule Socorro.Actions.Report do
 
     def report_error(report) do
 
-        Logger.info "Me report"
-
         message      = Map.fetch!(report, "message")
         time         = :os.system_time(:seconds)
         content_body = Map.fetch!(report, "message")
@@ -34,8 +32,6 @@ defmodule Socorro.Actions.Report do
         build        = "?"
             
         temp_socorro_id = Check.check_socorro_id(nil)
-
-        content      = temp_socorro_id <> content_body
 
         insert_result = Errors.new(%{
             "count"       => 1,
@@ -62,6 +58,8 @@ defmodule Socorro.Actions.Report do
             })
 
             Slack.send_slack_message(temp_socorro_id, message, 1, build)
+
+            Logger.info "Insert error report success: " <> temp_socorro_id
         end
     end
 end
