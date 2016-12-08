@@ -16,6 +16,7 @@ defmodule Socorro.Core.Worker do
     def handle_cast(payload, state) do
         report = List.first(state)
         Logger.info "Using esocorro worker: " <> inspect(report)
+        Logger.info "Socorro payload : " <> inspect(payload)
         send report, payload
         :timer.sleep(100)
         {:noreply, state}
