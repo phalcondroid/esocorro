@@ -4,14 +4,14 @@ defmodule Socorro.Core.Pool do
 
     def start_link() do
         config = [
-            {:name, {:local, :uploaders}},
+            {:name, {:local, :uploaders_esocorro_module}},
             {:worker_module, Worker},
             {:size, 10},
             {:max_overflow, 5}
         ]
 
         children = [
-            :poolboy.child_spec(:uploaders, config, [])
+            :poolboy.child_spec(:uploaders_esocorro_module, config, [])
         ]
 
         options = [
@@ -25,7 +25,7 @@ defmodule Socorro.Core.Pool do
     def report(payload) do
         spawn fn ->
             :poolboy.transaction(
-                :uploaders,
+                :uploaders_esocorro_module,
                 fn pid -> Worker.report(pid, payload) end,
                 :infinity
             )
