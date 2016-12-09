@@ -28,3 +28,16 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
+
+config :mongodb,
+    hostname: "localhost",
+    username: nil,
+    password: nil,
+    database: "wwd"
+
+config :slack_webhook,
+    :url, ""
+
+config :eerrors,
+    errors_url: "",
+    private_key: ""

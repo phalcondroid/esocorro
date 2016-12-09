@@ -35,9 +35,18 @@ defmodule Socorro.Core.ErrorException do
 	def iterate_trace(trace, new, n) do
 
 	    if n < Enum.count(trace) do
-	    	{namespace, _, _, [file: file, line: line]} = Enum.at(trace, n, 0)
-	    	new = new ++ [%{"file" => to_string(file), "namespace" => to_string(namespace),"line" => line}]
-	    	iterate_trace(trace, new, n + 1)
+
+	    	row = Enum.at(trace, n, 0)
+
+	    	case row do
+	    		{a, b, c, d} ->
+	    			{namespace, _, _, [file: file, line: line]} = row
+			    	new = new ++ [%{"file" => to_string(file), "namespace" => to_string(namespace),"line" => line}]
+			    	iterate_trace(trace, new, n + 1)
+			    _ ->
+			    	""
+	    	end
+	    	
 	    else
 	    	new
 	    end
