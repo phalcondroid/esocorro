@@ -39,7 +39,7 @@ defmodule Socorro.Core.ErrorException do
 	    	row = Enum.at(trace, n, 0)
 
 	    	case row do
-	    		{a, b, c, d} ->
+	    		{namespace, _, _, [file: file, line: line]} ->
 	    			IO.puts "mother foca : " <> inspect(row)
 	    			{namespace, _, _, [file: file, line: line]} = row
 			    	new = new ++ [%{"file" => to_string(file), "namespace" => to_string(namespace),"line" => line}]
