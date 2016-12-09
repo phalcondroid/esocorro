@@ -70,14 +70,24 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
     alias Socorro.Core.Exception
     ```
 
-  4. Report your exception in your project
+  4. Set in your start application file
+
+    ```
+    Socorro.config(
+        Application.fetch_env!(:eerrors, :errors_url),
+        Application.fetch_env!(:eerrors, :private_key)
+    )
+    ``
+
+  5. Report your exception in your project
 
     ```elixir
     try do
       :dodod + 1
-    rescue
-      e ->
-        Exception.set_exception(e)
+    rescue 
+        e -> Exception.set_exception(e)
+    catch 
+        e -> Exception.set_exception(e)
     end
     ```
 
