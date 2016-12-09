@@ -40,6 +40,7 @@ defmodule Socorro.Core.ErrorException do
 
 	    	case row do
 	    		{a, b, c, d} ->
+	    			IO.puts "mother foca : " <> inspect(row)
 	    			{namespace, _, _, [file: file, line: line]} = row
 			    	new = new ++ [%{"file" => to_string(file), "namespace" => to_string(namespace),"line" => line}]
 			    	iterate_trace(trace, new, n + 1)
