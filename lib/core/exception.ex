@@ -1,4 +1,4 @@
-defmodule Socorro.Core.Exception do
+defmodule Socorro.Core.ErrorException do
 
 	require Logger
 

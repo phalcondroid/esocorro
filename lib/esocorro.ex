@@ -4,6 +4,7 @@ defmodule Socorro do
     
     alias Socorro.Core.{ Pool }
     alias Socorro.Db.MongoPool
+    alias Socorro.Core.ErrorException
 
     def start(_type, _args) do
         MongoPool.connect()
@@ -16,8 +17,14 @@ defmodule Socorro do
     end
 
     def send_report(report) do
-        Pool.report(%{
-            "report"    => report
-        })
+        try do
+            Pool.report(%{
+                "report"    => report
+            })
+        rescue 
+            e -> ErrorException.set_exception(e)
+        catch 
+            e -> ErrorException.set_exception(e)
+        end
     end
 end
