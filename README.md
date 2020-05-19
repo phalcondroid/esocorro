@@ -6,21 +6,21 @@
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
 
-  1. Add `esocorro` to your list of dependencies in `mix.exs`:
+1. Add `esocorro` to your list of dependencies in `mix.exs`:
 
-    ```elixir
+```elixir
     def deps do
       [{:esocorro, github: "phalcondroid/esocorro"}]
     end
-    ```
+```
 
-  2. Ensure `esocorro` is started before your application:
+2. Ensure `esocorro` is started before your application:
 
-    ```elixir
+```elixir
     def application do
       [applications: [:esocorro]]
     end
-    ```
+```
 
   3. Set config variables, it is mandatory
 
